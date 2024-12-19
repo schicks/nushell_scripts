@@ -1,4 +1,4 @@
-def get_filtering [key: string] {                                                                                                        12/12/2024 10:09:40 AM
+def get_filtering [key: string] {
     each { |it|
         if ($it | default [] $key | get $key | is-empty) {
             $nothing
@@ -8,7 +8,7 @@ def get_filtering [key: string] {                                               
     }
 }
 
-export def npm_violations [ls_arg: string] {
+export def main [ls_arg: string] {
     npm ls $ls_arg --json
     | from json
     | get dependencies
